@@ -64,4 +64,7 @@
   <ItemGroup>
     <Build Include="Schemas\Admin.sql" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="UrlShortener.Db.publish.xml" />
+  </ItemGroup>
 </Project>
