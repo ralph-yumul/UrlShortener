@@ -4,4 +4,10 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\UrlShortener.Core\UrlShortener.Core.csproj" />
+    <ProjectReference Include="..\UrlShortener.Entity\UrlShortener.Entity.csproj" />
+    <ProjectReference Include="..\UrlShortener.Repository\UrlShortener.Repository.csproj" />
+  </ItemGroup>
+
 </Project>

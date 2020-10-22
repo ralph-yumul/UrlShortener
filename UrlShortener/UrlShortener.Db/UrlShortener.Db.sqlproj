@@ -60,9 +60,13 @@
     <Folder Include="Scripts" />
     <Folder Include="StoredProcedures" />
     <Folder Include="Tables" />
+    <Folder Include="Tables\Admin" />
+    <Folder Include="StoredProcedures\Admin" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Schemas\Admin.sql" />
+    <Build Include="Tables\Admin\Links.sql" />
+    <Build Include="StoredProcedures\Admin\AllLinks_Get.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="UrlShortener.Db.publish.xml" />

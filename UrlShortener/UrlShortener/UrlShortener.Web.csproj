@@ -5,9 +5,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="Utilities\Configurations\" />
     <Folder Include="ViewModels\" />
-    <Folder Include="Utilities\" />
     <Folder Include="RequestModels\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NetCore.AutoRegisterDi" Version="2.1.0" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.7.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\UrlShortener.Service\UrlShortener.Service.csproj" />
   </ItemGroup>
 
 </Project>
