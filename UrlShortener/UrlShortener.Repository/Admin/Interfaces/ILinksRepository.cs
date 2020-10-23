@@ -1,7 +1,7 @@
-﻿using EatSilogAvenue.Core;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using UrlShortener.Core;
 using UrlShortener.Entity.Admin;
 
 namespace UrlShortener.Repository.Admin.Interfaces

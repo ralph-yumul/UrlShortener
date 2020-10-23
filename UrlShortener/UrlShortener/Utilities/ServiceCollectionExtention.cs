@@ -10,9 +10,8 @@ namespace UrlShortener.Web.Utilities.Extensions
         {
             var assemblies = new string[]
             {
-                "EatSilogAvenue.Repository",
-                "EatSilogAvenue.Service"
-                //"EatSilogAvenue.Utility"
+                "UrlShortener.Repository",
+                "UrlShortener.Service"
             };
 
             foreach (var assembly in assemblies)

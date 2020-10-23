@@ -5,28 +5,27 @@
     const KEYDOWN_EVENT = 'keydown';
 
     // Field Constants
-    const CATEGORY_NAME_FIELD = 'categoryName';
+    const LINK_ORIG_FIELD = 'txt-link';
 
     // Helper Constants
     const gridHelper = new GridHelper();
+    // Service Constants
+    const linksService = new LinkServices();
 
     // Kendo Grid Data Source Constants
     const COUNT_KEY = 'count';
     const DATA_KEY = 'data';
 
     // Message Constants
-    const CONFIRM_DELETE_CATEGORY_MESSAGE = 'Are you sure you want to delete ';
-
-    // Service Constants
-    const categoryService = new CategoryService();
+    const CONFIRM_DELETE_LINK_MESSAGE = 'Are you sure you want to delete ';
 
     // Selector Constants
     const ACTION_BUTTONS_TEMPLATE_ID = 'action-buttons-template';
-    const CATEGORY_GRID_ID = 'category-grid';
+    const LINKS_GRID_ID = 'links-grid';
     const TOOLBAR_TEMPLATE_ID = 'toolbar-template';
     const STRING_SEARCH_ID = 'searchString';
     const BUTTON_SEARCH_ID = 'btnSearch';
-    const DELETE_CATEGORY_CLASS = 'delete-category';
+    const DELETE_LINK_CLASS = 'delete-link';
     const K_HEADER_CLASS = '.k-header';
 
     // TItle Constants
@@ -54,13 +53,13 @@
     let attachEvents = function () {
         getElementById(BUTTON_SEARCH_ID).on(CLICK_EVENT, onSearchIconClicked);
         getElementById(STRING_SEARCH_ID).on(KEYDOWN_EVENT, onEnterPressed);
-        getElementById(CATEGORY_GRID_ID).on(CLICK_EVENT,
-            getClassSelector(DELETE_CATEGORY_CLASS),
+        getElementById(LINKS_GRID_ID).on(CLICK_EVENT,
+            getClassSelector(DELETE_LINK_CLASS),
             onCategoryDeleteIconClicked);
     };
 
-    let getCategories = function (search, skip, take, field, direction, callback) {
-        categoryService.searchCategory({
+    let getLinks = function (search, skip, take, field, direction, callback) {
+        linksService.searchLink({
             search: search,
             skip: skip,
             take: take,
@@ -72,15 +71,15 @@
 
     let onCategoryDeleteIconClicked = function () {
         let selectedData = gridHelper.getSelectedItem({
-            id: CATEGORY_GRID_ID
+            id: LINKS_GRID_ID
         });
 
-        kendo.confirm(CONFIRM_DELETE_CATEGORY_MESSAGE + selectedData.categoryName + '?')
+        kendo.confirm(CONFIRM_DELETE_LINK_MESSAGE + selectedData.categoryName + '?')
             .done(function () {
-                categoryService.deleteCategory({
-                    id: selectedData.categoryId,
+                linksService.deleteCategory({
+                    id: selectedData.linkId,
                     callback: gridHelper.removeItem({
-                        id: CATEGORY_GRID_ID,
+                        id: LINKS_GRID_ID,
                         selectedData: selectedData
                     })
                 });
@@ -96,12 +95,12 @@
 
     let onSearchIconClicked = function () {
         let searchString = getElementById(STRING_SEARCH_ID).val();
-        renderCategoryGrid(searchString);
+        renderLinksGrid(searchString);
     };
 
-    let renderCategoryGrid = function (searchString) {
+    let renderLinksGrid = function (searchString) {
         gridHelper.renderWithTransport({
-            id: CATEGORY_GRID_ID,
+            id: LINKS_GRID_ID,
             options: {
                 transport: {
                     read: function (options) {
@@ -116,7 +115,7 @@
                             direction = options.data.sort[0].dir;
                         }
 
-                        getCategories(search, skip, take, field, direction, options.success);
+                        getLinks(search, skip, take, field, direction, options.success);
                     }
                 },
                 schema: {
@@ -129,7 +128,7 @@
                     allowUnsort: true
                 },
                 columns: [{
-                    field: CATEGORY_NAME_FIELD,
+                    field: LINK_ORIG_FIELD,
                     title: NAME_TITLE
                 },
                 {
@@ -145,7 +144,7 @@
     };
 
     $(window).on(LOAD_EVENT, function () {
-        renderCategoryGrid();
+        renderLinksGrid();
         sort();
         attachEvents();
     });

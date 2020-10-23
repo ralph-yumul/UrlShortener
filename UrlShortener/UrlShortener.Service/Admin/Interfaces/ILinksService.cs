@@ -1,12 +1,12 @@
-﻿using EatSilogAvenue.Core;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using UrlShortener.Core;
 using UrlShortener.Entity.Admin;
 
 namespace UrlShortener.Service.Admin.Interfaces
 {
-    interface ILinksService : IDeleter<int>,
+    public interface ILinksService : IDeleter<int>,
         IInserter<Links>,
         IListRetriever<Links>,
         IRetriever<Links>,

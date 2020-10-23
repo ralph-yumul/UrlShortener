@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace EatSilogAvenue.Core
+namespace UrlShortener.Core
 {
     public interface IRetriever<TEntity>
     {

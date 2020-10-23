@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace EatSilogAvenue.Core
+namespace UrlShortener.Core
 {
     public class Subset<T>
     {

@@ -1,0 +1,44 @@
+﻿@model IEnumerable<UrlShortener.Entity.Admin.Links>
+
+@{
+    ViewData["Title"] = "LINKS";
+}
+
+<div class="page-header-grid">
+    <h1>LINKS</h1>
+</div>
+
+<div id="example">
+    <a class="btn btn-info" asp-action="Create">
+        <i class="fas fa-fw fa-plus-circle"></i>
+        Create New
+    </a>
+    <div id="links-grid" class="mt-3">
+
+    </div>
+</div>
+
+<script id="toolbar-template" type="text/x-kendo-template">
+    <div class="input-group">
+        <div class="col p-2">
+        </div>
+        <div class="col p-2">
+            <div class="input-group">
+                <input id="searchString" type="text" class="form-control w-25" placeholder="Search">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary js-search-order" type="button" id="btnSearch"><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+
+<script id='action-buttons-template' type='text/x-kendo-template'>
+    <a data-toggle="tooltip" data-placement="top" title="Edit Link" href="/Admin/Edit/#=linkId#"><i class="fas fa-edit p-1 text-success"></i></a>
+    <i data-toggle="tooltip" data-placement="top" title="Delete Link" class="fas fa-trash text-danger p-1 delete-category"></i>
+</script>
+@section Scripts{
+    <script src="~/js/services/links/links-service.js"></script>
+    <script src="~/js/helpers/widget-helpers/grid-helper.js"></script>
+    <script src="~/js/pages/links/links-page.js"></script>
+}

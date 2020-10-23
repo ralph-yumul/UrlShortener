@@ -67,6 +67,7 @@
     <Build Include="Schemas\Admin.sql" />
     <Build Include="Tables\Admin\Links.sql" />
     <Build Include="StoredProcedures\Admin\AllLinks_Get.sql" />
+    <Build Include="StoredProcedures\Admin\Links_Get.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="UrlShortener.Db.publish.xml" />

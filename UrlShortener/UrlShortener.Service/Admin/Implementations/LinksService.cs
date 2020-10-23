@@ -1,17 +1,17 @@
-﻿using EatSilogAvenue.Core;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using UrlShortener.Core;
 using UrlShortener.Entity.Admin;
 using UrlShortener.Repository.Admin.Interfaces;
 using UrlShortener.Service.Admin.Interfaces;
 
 namespace UrlShortener.Service.Admin.Implementations
 {
-    class LinksService : ILinksService
+    public class LinksService : ILinksService
     {
-        private ILinksRepository _linksRepository { get; }
+        private readonly ILinksRepository _linksRepository;
         public LinksService(ILinksRepository linksRepository)
         {
             _linksRepository = linksRepository;
@@ -31,9 +31,9 @@ namespace UrlShortener.Service.Admin.Implementations
             return await _linksRepository.GetListAsync();
         }
 
-        public Task<Subset<Links>> GetListAsync(string search, int skip, int take, string direction, string field)
+        public async Task<Subset<Links>> GetListAsync(string search, int skip, int take, string direction, string field)
         {
-            throw new NotImplementedException();
+            return await _linksRepository.GetListAsync(search, skip, take, direction, field);
         }
 
         public Task InsertAsync(Links entity)
@@ -42,6 +42,11 @@ namespace UrlShortener.Service.Admin.Implementations
         }
 
         public Task UpdateAsync(int id, Links entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<Subset<Links>> ISubsetRetriever<Links, string>.GetListAsync(string search, int skip, int take, string direction, string field)
         {
             throw new NotImplementedException();
         }

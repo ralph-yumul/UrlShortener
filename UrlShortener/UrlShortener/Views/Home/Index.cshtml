@@ -1,8 +1,28 @@
-﻿@{
+﻿@model UrlShortener.Web.ViewModels.LinksViewModel
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Welcome to SHORT URL</h1>
+    <p>Make your Long URL to a Shorter URL.</p>
+
+    <hr />
+    <div class="container">
+        <div class="col-md-12">
+            <form asp-action="Create" id="create-category">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="LinkOrig" class="control-label "></label>
+                    <input asp-for="LinkOrig" class="form-control" name="txt-url" />
+                    <span asp-validation-for="LinkOrig" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" id="btn-generate" value="Generate URL" class="btn btn-primary btn-lg" />
+                </div>
+            </form>
+        </div>
+    </div>
+
 </div>

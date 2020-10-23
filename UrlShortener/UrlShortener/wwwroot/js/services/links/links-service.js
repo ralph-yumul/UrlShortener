@@ -1,4 +1,4 @@
-﻿function CategoryService() {
+﻿function LinkServices() {
 
     // Data Type Constants
     const JSON_DATA = 'json';
@@ -10,12 +10,12 @@
 
 
     // URL Constants
-    const CREATE_CATEGORY_URL = '/Category/Create';
-    const DELETE_CATEGORY_URL = '/Category/Delete/';
-    const GET_ALL_URL = '/Category/GetAll';
-    const GET_CATEGORY_URL = '/Category/Get/';
-    const SEARCH_CATEGORY_URL = '/Category/GetAsync/';
-    const EDIT_CATEGORYE_URL = '/Category/Edit/';
+    const CREATE_LINK_URL = '/Links/Create';
+    const DELETE_LINK_URL = '/Links/Delete/';
+    const GET_ALL_URL = '/Links/GetAll';
+    const GET_LINK_URL = '/Links/Get/';
+    const SEARCH_LINK_URL = '/Links/GetAllAsync/';
+    const EDIT_LINK_URL = '/Links/Edit/';
 
 
     // Utility Constants
@@ -23,9 +23,9 @@
     const FALSE = false;
 
 
-    this.create = function (params) {
+    this.createLink = function (params) {
         $.ajax({
-            url: CREATE_CATEGORY_URL,
+            url: CREATE_LINK_URL,
             method: HTTP_POST,
             contentType: APPLICATION_JSON,
             //beforeSend: params.beforeSend,
@@ -34,25 +34,25 @@
         });
     };
 
-    this.deleteCategory = function (params) {
+    this.deleteLink = function (params) {
         $.ajax({
-            url: DELETE_CATEGORY_URL + params.id,
+            url: DELETE_LINK_URL + params.id,
             method: HTTP_PUT,
             contentType: APPLICATION_JSON,
             success: params.callback
         });
     };
 
-    this.get = function (params) {
+    this.getLink = function (params) {
         $.ajax({
             cache: FALSE,
-            url: GET_CATEGORY_URL + params.id,
+            url: GET_LINK_URL + params.id,
             method: HTTP_GET,
             success: params.callback
         });
     };
 
-    this.getAll = function (params) {
+    this.getAllLinks = function (params) {
         $.ajax({
             cache: FALSE,
             url: GET_ALL_URL,
@@ -61,10 +61,10 @@
         });
     };
 
-    this.searchCategory = function (params) {
+    this.searchLink = function (params) {
         $.ajax({
             cache: FALSE,
-            url: SEARCH_CATEGORY_URL,
+            url: SEARCH_LINK_URL,
             method: HTTP_POST,
             contentType: APPLICATION_JSON,
             data: JSON.stringify({
@@ -78,10 +78,10 @@
         });
     };
 
-    this.updateCategory = function (params) {
+    this.updateLink = function (params) {
         console.log(params);
         $.ajax({
-            url: EDIT_CATEGORYE_URL + params.id,
+            url: EDIT_LINK_URL + params.id,
             method: HTTP_PUT,
             contentType: APPLICATION_JSON,
             data: params.data,

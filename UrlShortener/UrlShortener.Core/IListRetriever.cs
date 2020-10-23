@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace EatSilogAvenue.Core
+namespace UrlShortener.Core
 {
     public interface IListRetriever<TEntity>
     {
