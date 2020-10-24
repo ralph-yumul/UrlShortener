@@ -1,4 +1,4 @@
-﻿@model IEnumerable<UrlShortener.Entity.Admin.Links>
+﻿@model IEnumerable<UrlShortener.Entity.Admin.HyperLinks>
 
 @{
     ViewData["Title"] = "LINKS";
@@ -38,7 +38,7 @@
     <i data-toggle="tooltip" data-placement="top" title="Delete Link" class="fas fa-trash text-danger p-1 delete-category"></i>
 </script>
 @section Scripts{
-    <script src="~/js/services/links/links-service.js"></script>
-    <script src="~/js/helpers/widget-helpers/grid-helper.js"></script>
-    <script src="~/js/pages/links/links-page.js"></script>
+    <script src="~/js/services/links/links-service.js" asp-append-version="true"></script>
+    <script src="~/js/helpers/widget-helpers/grid-helper.js" asp-append-version="true"></script>
+    <script src="~/js/pages/links/links-page.js" asp-append-version="true"></script>
 }

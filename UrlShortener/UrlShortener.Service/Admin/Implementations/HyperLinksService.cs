@@ -9,10 +9,10 @@ using UrlShortener.Service.Admin.Interfaces;
 
 namespace UrlShortener.Service.Admin.Implementations
 {
-    public class LinksService : ILinksService
+    public class HyperLinksService : IHyperLinksService
     {
-        private readonly ILinksRepository _linksRepository;
-        public LinksService(ILinksRepository linksRepository)
+        private readonly IHyperLinksRepository _linksRepository;
+        public HyperLinksService(IHyperLinksRepository linksRepository)
         {
             _linksRepository = linksRepository;
         }
@@ -21,32 +21,32 @@ namespace UrlShortener.Service.Admin.Implementations
             throw new NotImplementedException();
         }
 
-        public Task<Links> GetAsync(int id)
+        public Task<HyperLinks> GetAsync(int id)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<IEnumerable<Links>> GetListAsync()
+        public async Task<IEnumerable<HyperLinks>> GetListAsync()
         {
             return await _linksRepository.GetListAsync();
         }
 
-        public async Task<Subset<Links>> GetListAsync(string search, int skip, int take, string direction, string field)
+        public async Task<Subset<HyperLinks>> GetListAsync(string search, int skip, int take, string direction, string field)
         {
             return await _linksRepository.GetListAsync(search, skip, take, direction, field);
         }
 
-        public Task InsertAsync(Links entity)
+        public Task InsertAsync(HyperLinks entity)
         {
             throw new NotImplementedException();
         }
 
-        public Task UpdateAsync(int id, Links entity)
+        public Task UpdateAsync(int id, HyperLinks entity)
         {
             throw new NotImplementedException();
         }
 
-        Task<Subset<Links>> ISubsetRetriever<Links, string>.GetListAsync(string search, int skip, int take, string direction, string field)
+        Task<Subset<HyperLinks>> ISubsetRetriever<HyperLinks, string>.GetListAsync(string search, int skip, int take, string direction, string field)
         {
             throw new NotImplementedException();
         }

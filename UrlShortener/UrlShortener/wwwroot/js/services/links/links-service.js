@@ -13,8 +13,8 @@
     const CREATE_LINK_URL = '/Links/Create';
     const DELETE_LINK_URL = '/Links/Delete/';
     const GET_ALL_URL = '/Links/GetAll';
-    const GET_LINK_URL = '/Links/Get/';
-    const SEARCH_LINK_URL = '/Links/GetAllAsync/';
+    const GET_LINK_URL = '/Links/Get';
+    const SEARCH_LINK_URL = '/Links/GetAsync/';
     const EDIT_LINK_URL = '/Links/Edit/';
 
 
@@ -68,13 +68,14 @@
             method: HTTP_POST,
             contentType: APPLICATION_JSON,
             data: JSON.stringify({
-                'search': params.search,
-                'skip': params.skip,
-                'take': params.take,
-                'field': params.field,
-                'direction': params.direction
+                search: params.search,
+                skip: params.skip,
+                take: params.take,
+                field: params.field,
+                direction: params.direction
             }),
             success: params.callback
+            
         });
     };
 

@@ -12,10 +12,10 @@ using UrlShortener.Repository.ORM;
 
 namespace UrlShortener.Repository.Admin.Implementations
 {
-    public class LinksRepository : DapperRepository, ILinksRepository
+    public class HyperLinksRepository : DapperRepository, IHyperLinksRepository
     {
         #region Constructor
-        public LinksRepository(IConfiguration configuration) 
+        public HyperLinksRepository(IConfiguration configuration) 
             : base(configuration)
         {
         }
@@ -26,17 +26,17 @@ namespace UrlShortener.Repository.Admin.Implementations
             throw new NotImplementedException();
         }
 
-        public Task<Links> GetAsync(int id)
+        public Task<HyperLinks> GetAsync(int id)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<IEnumerable<Links>> GetListAsync()
+        public async Task<IEnumerable<HyperLinks>> GetListAsync()
         {
-            return await QueryMultipleAsync<Links>("Admin.AllLinks_Get");
+            return await QueryMultipleAsync<HyperLinks>("Admin.AllLinks_Get");
         }
 
-        public async Task<Subset<Links>> GetListAsync(string search, int skip, int take, string direction, string field)
+        public async Task<Subset<HyperLinks>> GetListAsync(string search, int skip, int take, string direction, string field)
         {
             var dynamicParameters = new DynamicParameters();
 
@@ -47,24 +47,24 @@ namespace UrlShortener.Repository.Admin.Implementations
             dynamicParameters.Add("Field", field, direction: ParameterDirection.Input);
             dynamicParameters.Add("Count", DbType.Int32, direction: ParameterDirection.Output);
 
-            var list = await QueryMultipleAsync<Links>("Admin.Links_Get", dynamicParameters);
+            var list = await QueryMultipleAsync<HyperLinks>("Admin.Links_Get", dynamicParameters);
 
             var totalCount = dynamicParameters.Get<int>("Count");
 
-            return new Subset<Links>(list, totalCount);
+            return new Subset<HyperLinks>(list, totalCount);
         }
 
-        public Task InsertAsync(Links entity)
+        public Task InsertAsync(HyperLinks entity)
         {
             throw new NotImplementedException();
         }
 
-        public Task UpdateAsync(int id, Links entity)
+        public Task UpdateAsync(int id, HyperLinks entity)
         {
             throw new NotImplementedException();
         }
 
-        Task<Subset<Links>> ISubsetRetriever<Links, string>.GetListAsync(string search, int skip, int take, string direction, string field)
+        Task<Subset<HyperLinks>> ISubsetRetriever<HyperLinks, string>.GetListAsync(string search, int skip, int take, string direction, string field)
         {
             throw new NotImplementedException();
         }

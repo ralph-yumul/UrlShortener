@@ -9,6 +9,7 @@
 
     // Helper Constants
     const gridHelper = new GridHelper();
+
     // Service Constants
     const linksService = new LinkServices();
 
@@ -147,5 +148,6 @@
         renderLinksGrid();
         sort();
         attachEvents();
+        console.log('change');
     });
 })(jQuery);

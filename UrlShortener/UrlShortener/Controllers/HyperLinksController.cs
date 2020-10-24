@@ -1,24 +1,20 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using UrlShortener.Core;
 using UrlShortener.Entity.Admin;
 using UrlShortener.Service.Admin.Interfaces;
+using UrlShortener.Web.RequestModels;
 
 namespace UrlShortener.Web.Controllers
 {
-    public class LinksController : Controller
+    public class HyperLinksController : Controller
     {
-        private readonly ILinksService _linksService;
-        private readonly ILogger<LinksController> _logger;
+        private readonly IHyperLinksService _linksService;
 
-        public LinksController(ILinksService linksService, ILogger<LinksController> logger)
+        public HyperLinksController(IHyperLinksService linksService)
         {
             _linksService = linksService;
-            _logger = logger;
         }
 
         public IActionResult Index()
@@ -27,24 +23,22 @@ namespace UrlShortener.Web.Controllers
         }
 
         [HttpGet]
-        public async Task<IEnumerable<Links>> GetAll()
+        public async Task<IEnumerable<HyperLinks>> GetAll()
         {
             var categories = await _linksService.GetListAsync();
             return categories;
         }
 
         [HttpPost]
-        public async Task<ActionResult<Subset<Links>>> GetAllAsync([FromBody] SubsetRequestModel<string> subsetRequest)
+        public async Task<ActionResult<Subset<HyperLinks>>> GetAsync([FromBody] SubsetRequestModel<string> subsetRequest)
         {
-            var searchedLinks = await _linksService.GetListAsync(
+            return await _linksService.GetListAsync(
                subsetRequest.Search,
                subsetRequest.Skip,
                subsetRequest.Take,
                subsetRequest.Direction,
                subsetRequest.Field
            );
-
-            return searchedLinks;
         }
     }
 }
