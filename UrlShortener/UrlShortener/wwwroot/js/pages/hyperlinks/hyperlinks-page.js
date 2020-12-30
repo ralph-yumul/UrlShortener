@@ -5,13 +5,13 @@
     const KEYDOWN_EVENT = 'keydown';
 
     // Field Constants
-    const LINK_ORIG_FIELD = 'txt-link';
+    const LINK_ORIG_FIELD = 'linkOrig';
 
     // Helper Constants
     const gridHelper = new GridHelper();
 
     // Service Constants
-    const linksService = new LinkServices();
+    const linksService = new HyperLinkServices();
 
     // Kendo Grid Data Source Constants
     const COUNT_KEY = 'count';
@@ -60,7 +60,7 @@
     };
 
     let getLinks = function (search, skip, take, field, direction, callback) {
-        linksService.searchLink({
+        var me = linksService.searchLink({
             search: search,
             skip: skip,
             take: take,
@@ -68,6 +68,7 @@
             direction: direction,
             callback: callback
         });
+        return me;
     };
 
     let onCategoryDeleteIconClicked = function () {
@@ -125,12 +126,16 @@
                 },
                 toolbar: kendo.template(getElementById(TOOLBAR_TEMPLATE_ID).html()),
                 sortable: {
-                    mode: "multiple",
+                    mode: "single",
                     allowUnsort: true
                 },
                 columns: [{
-                    field: LINK_ORIG_FIELD,
-                    title: NAME_TITLE
+                    field: 'linkOrig',
+                    title: 'Original Link'
+                },
+                {
+                    field: 'linkShort',
+                    title: 'Short URL'
                 },
                 {
                     template: kendo.template(getElementById(ACTION_BUTTONS_TEMPLATE_ID).html()),
@@ -148,6 +153,5 @@
         renderLinksGrid();
         sort();
         attachEvents();
-        console.log('change');
     });
 })(jQuery);

@@ -1,4 +1,4 @@
-﻿function LinkServices() {
+﻿function HyperLinkServices() {
 
     // Data Type Constants
     const JSON_DATA = 'json';
@@ -10,12 +10,12 @@
 
 
     // URL Constants
-    const CREATE_LINK_URL = '/Links/Create';
-    const DELETE_LINK_URL = '/Links/Delete/';
-    const GET_ALL_URL = '/Links/GetAll';
-    const GET_LINK_URL = '/Links/Get';
-    const SEARCH_LINK_URL = '/Links/GetAsync/';
-    const EDIT_LINK_URL = '/Links/Edit/';
+    const CREATE_LINK_URL = '/HyperLinks/Create';
+    const DELETE_LINK_URL = '/HyperLinks/Delete/';
+    const GET_ALL_URL = '/HyperLinks/GetAll/';
+    const GET_LINK_URL = '/HyperLinks/Get/';
+    const SEARCH_LINK_URL = '/HyperLinks/GetListAsync/';
+    const EDIT_LINK_URL = '/HyperLinks/Edit/';
 
 
     // Utility Constants
@@ -80,7 +80,6 @@
     };
 
     this.updateLink = function (params) {
-        console.log(params);
         $.ajax({
             url: EDIT_LINK_URL + params.id,
             method: HTTP_PUT,

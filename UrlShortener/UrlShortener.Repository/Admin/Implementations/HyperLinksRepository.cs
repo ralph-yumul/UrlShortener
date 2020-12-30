@@ -31,7 +31,7 @@ namespace UrlShortener.Repository.Admin.Implementations
             throw new NotImplementedException();
         }
 
-        public async Task<IEnumerable<HyperLinks>> GetListAsync()
+        public async Task<IEnumerable<HyperLinks>> GetAllAsync()
         {
             return await QueryMultipleAsync<HyperLinks>("Admin.AllLinks_Get");
         }
@@ -54,9 +54,15 @@ namespace UrlShortener.Repository.Admin.Implementations
             return new Subset<HyperLinks>(list, totalCount);
         }
 
-        public Task InsertAsync(HyperLinks entity)
+        public async Task InsertAsync(HyperLinks hyperLinks)
         {
-            throw new NotImplementedException();
+            await ExecuteAsync("Admin.HyperLinks_Insert",
+                new
+                {
+                    hyperLinks.LinkOrig,
+                    hyperLinks.LinkShort,
+                    CreatedBy = "Admin"
+                });
         }
 
         public Task UpdateAsync(int id, HyperLinks entity)
@@ -64,9 +70,14 @@ namespace UrlShortener.Repository.Admin.Implementations
             throw new NotImplementedException();
         }
 
-        Task<Subset<HyperLinks>> ISubsetRetriever<HyperLinks, string>.GetListAsync(string search, int skip, int take, string direction, string field)
+        public async Task<HyperLinks> GetStringAsync(string shortLink)
         {
-            throw new NotImplementedException();
+            return await QuerySingleAsync<HyperLinks>("Admin.HyperLInk_GetByShortLink",
+                 new
+                 {
+                     LinkShort = shortLink
+                 }
+             );
         }
     }
 }

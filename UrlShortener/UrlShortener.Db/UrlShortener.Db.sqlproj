@@ -61,13 +61,15 @@
     <Folder Include="StoredProcedures" />
     <Folder Include="Tables" />
     <Folder Include="Tables\Admin" />
-    <Folder Include="StoredProcedures\Admin" />
+    <Folder Include="StoredProcedures\HyperLinks" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Schemas\Admin.sql" />
     <Build Include="Tables\Admin\Links.sql" />
-    <Build Include="StoredProcedures\Admin\AllLinks_Get.sql" />
-    <Build Include="StoredProcedures\Admin\Links_Get.sql" />
+    <Build Include="StoredProcedures\HyperLinks\AllLinks_Get.sql" />
+    <Build Include="StoredProcedures\HyperLinks\Links_Get.sql" />
+    <Build Include="StoredProcedures\HyperLinks\HyperLink_GetByShortLink.sql" />
+    <Build Include="StoredProcedures\HyperLinks\HyperLinks_Insert.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="UrlShortener.Db.publish.xml" />

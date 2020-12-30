@@ -26,9 +26,9 @@ namespace UrlShortener.Service.Admin.Implementations
             throw new NotImplementedException();
         }
 
-        public async Task<IEnumerable<HyperLinks>> GetListAsync()
+        public async Task<IEnumerable<HyperLinks>> GetAllAsync()
         {
-            return await _linksRepository.GetListAsync();
+            return await _linksRepository.GetAllAsync();
         }
 
         public async Task<Subset<HyperLinks>> GetListAsync(string search, int skip, int take, string direction, string field)
@@ -36,19 +36,19 @@ namespace UrlShortener.Service.Admin.Implementations
             return await _linksRepository.GetListAsync(search, skip, take, direction, field);
         }
 
-        public Task InsertAsync(HyperLinks entity)
+        public async Task InsertAsync(HyperLinks hyperLinks)
+        {
+            await _linksRepository.InsertAsync(hyperLinks);
+        }
+
+        public Task UpdateAsync(int id, HyperLinks hyperLinks)
         {
             throw new NotImplementedException();
         }
 
-        public Task UpdateAsync(int id, HyperLinks entity)
+        public async Task<HyperLinks> GetStringAsync(string shortLink)
         {
-            throw new NotImplementedException();
-        }
-
-        Task<Subset<HyperLinks>> ISubsetRetriever<HyperLinks, string>.GetListAsync(string search, int skip, int take, string direction, string field)
-        {
-            throw new NotImplementedException();
+            return await _linksRepository.GetStringAsync(shortLink);
         }
     }
 }

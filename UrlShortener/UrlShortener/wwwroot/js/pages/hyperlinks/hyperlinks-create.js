@@ -1,8 +1,8 @@
 ﻿(function ($, undefined) {
     // Element Constants
     const REQUEST_VERIFICATION_FIELD_SELECTOR = '[name="__RequestVerificationToken"]';
-    const CATEGORY_NAME_SELECTOR = '[name = "categoryName"]';
-    var initial_form_state = $('#create-category').serialize();
+    const LINK_ORIG_NAME_SELECTOR = '[name = "linkOrig"]';
+    var initial_form_state = $('#create-link').serialize();
 
     // Event Constants
     const SUBMIT_EVENT = 'submit';
@@ -12,18 +12,19 @@
 
     // Helpers
     const formHelper = new FormHelper();
+    const serviceHelper = new ServiceHelper();
 
     // Messages
     const UNLOAD_MESSAGE = "You have unsaved changes on this page. Do you want to leave this page and discard your changes or stay on this page?";
 
     // Services
-    const categoryService = new CategoryService();
+    //const hyperlinkService = new HyperLinkServices();
 
     // Selector Constants
-    const CREATE_FORM_ID = 'create-category';
+    const CREATE_FORM_ID = 'create-link';
 
     // URL Constants
-    const CATEGORY_URL = '/Category';
+    const HYPERLINKS_INDEX_URL = '/HyperLinks';
 
     // Utility Constants
     const REQUEST_VERIFICATION_TOKEN = 'RequestVerificationToken';
@@ -56,17 +57,18 @@
 
             jsonString = JSON.stringify(json);
 
-            categoryService.create({
+            serviceHelper.createService({
+                url: '/HyperLinks/Create',
                 data: jsonString,
-                callback: window.location.href = CATEGORY_URL
+                callback: window.location.href = HYPERLINKS_INDEX_URL
             });
         }
     };
 
     let onInputChange = function () {
-        let nameInput = $(CATEGORY_NAME_SELECTOR).val();
+        let nameInput = $(LINK_ORIG_NAME_SELECTOR).val();
 
-        $(CATEGORY_NAME_SELECTOR).val($.trim(nameInput));
+        $(LINK_ORIG_NAME_SELECTOR).val($.trim(nameInput));
     };
 
     let onRequestBeforeSend = function (request) {

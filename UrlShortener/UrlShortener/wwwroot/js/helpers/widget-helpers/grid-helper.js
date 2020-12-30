@@ -128,6 +128,8 @@
         if (grid !== undefined) {
             grid.kendoGrid(configuration);
         }
+
+        //console.log(configuration);
     };
 
     this.setDataSource = function (params) {

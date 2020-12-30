@@ -1,0 +1,35 @@
+﻿@model UrlShortener.Web.ViewModels.HyperLinksViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>CREATE SHORT URL</h1>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" id="create-link">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="LinkOrig" class="control-label"></label>
+                <input asp-for="LinkOrig" class="form-control" name="linkOrig" />
+                <span asp-validation-for="LinkOrig" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" id="btn-create" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script src="~/js/helpers/widget-helpers/form-helper.js" asp-append-version="true"></script>
+    @*<script src="~/js/services/hyperlinks/hyperlinks-service.js" asp-append-version="true"></script>*@
+    <script src="~/js/helpers/service-helpers.js" asp-append-version="true"></script>
+    <script src="~/js/pages/hyperlinks/hyperlinks-create.js" asp-append-version="true"></script>
+}

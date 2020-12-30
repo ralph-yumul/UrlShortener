@@ -5,6 +5,6 @@ namespace UrlShortener.Core
 {
     public interface IListRetriever<TEntity>
     {
-        Task<IEnumerable<TEntity>> GetListAsync();
+        Task<IEnumerable<TEntity>> GetAllAsync();
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace UrlShortener.Web.ViewModels
 {
-    public class LinksViewModel
+    public class HyperLinksViewModel
     {
         public int LinkId { get; set; }
 

@@ -9,6 +9,7 @@ namespace UrlShortener.Repository.Admin.Interfaces
     public interface IHyperLinksRepository : IDeleter<int>,
         IInserter<HyperLinks>,
         IListRetriever<HyperLinks>,
+        IStringRetriever<HyperLinks>,
         IRetriever<HyperLinks>,
         IUpdater<int, HyperLinks>,
         ISubsetRetriever<HyperLinks, string>
